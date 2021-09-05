@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // happening upon page loading
+    // console.log("loaded")
     fetchSongs()
 })
 
@@ -10,7 +11,7 @@ function fetchSongs() {
     fetch{`${BASE_URL}/songs`}
     .then(resp => resp.json())
     .then(songs => {
-        // doing something with data fecthed
+        // doing something with data fetched
         
     })
 }
