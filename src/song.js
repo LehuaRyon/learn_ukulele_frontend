@@ -1,4 +1,4 @@
-class Song(
+class Song{
     constructor(title, artist, img_url, link, genre_id) {
         this.title = title;
         this.artist = artist;
@@ -6,6 +6,8 @@ class Song(
         this.link = link;
         this.genre_id = genre_id;
     }
-)
 
-// instance method that renders object to dom
+    // instance method that renders song object to dom
+}
+
+
