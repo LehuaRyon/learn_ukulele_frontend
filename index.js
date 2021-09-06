@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // happening upon page loading
-    createSongForm()
     fetchSongs()
+    createSongForm()
 })
 
 const BASE_URL = "http://localhost:3000/api/v1"
@@ -90,10 +90,10 @@ function createSongForm() {
         <br><br>
     </form>
     `
-    songForm.addEventListener("submit", (e) => submitSongForm(e))
+    songForm.addEventListener('submit', (e) => submittedSongForm(e))
 }
 
-function submitSongForm(e) {
+function submittedSongForm(e) {
     e.preventDefault();
     const titleValue = document.getElementById("input-title").value
     const artistValue = document.getElementById("input-artist").value
@@ -101,14 +101,42 @@ function submitSongForm(e) {
     const linkValue = document.getElementById("link-url").value
     const genreId = document.getElementById("genres-select").value
     // const genreValue = parseInt(document.getElementById("genres-select").value)
-    
-    let song = {
-        title: titleValue,
-        artist: artistValue,
-        img_url: imageValue,
-        link: linkValue,
-        genre_id: genreId
-    }
+    songPostFetch(titleValue, artistValue, imageValue, linkValue, genreId)
+}
+
+function songPostFetch(title, artist, img_url, link, genre_id) {
+    // console.log(title, artist, img_url, link, genre_id)
+    // build body object outside fetch
+    const bodyData = {title, artist, img_url, link, genre_id}
+    fetch(`${BASE_URL}/songs`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+            // title: title,
+            // artist: artist,
+            // img_url: img_url,
+            // link: link,
+            // genre_id: genre_id
+    })
+    .then(resp => resp.json())
+    .then(song => {
+        // console.log(song)
+        // const songData = song.data.attributes
+        const songData = song.data
+        const songDivMarkup =
+        `
+        <div data-id=${song.id}>
+            <img src=${songData.attributes.img_url} height="200" width="250">
+            <h2>Title: ${songData.attributes.title}</h2>
+            <h3>Artist: ${songData.attributes.artist}</h3>
+            <p>Genre: ${songData.attributes.genre.name}</p>
+            <a href=${songData.attributes.link}>Ukulele Chords</a>
+            <button data-id=${songData.id}>edit</button>
+        </div>
+        <br><br>
+        `;
+        document.getElementById("songs-container").innerHTML += songDivMarkup;
+    })
 }
 
 // delete - delete a user

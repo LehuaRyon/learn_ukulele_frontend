@@ -1,12 +1,12 @@
-class Song{
-    constructor(id, title, artist, img_url, link, genre_id) {
-        this.id = id;
-        this.title = title;
-        this.artist = artist;
-        this.img_url = img_url;
-        this.link = link;
-        this.genre_id = genre_id;
-    }
+// class Song{
+//     constructor(id, title, artist, img_url, link, genre_id) {
+//         this.id = id;
+//         this.title = title;
+//         this.artist = artist;
+//         this.img_url = img_url;
+//         this.link = link;
+//         this.genre_id = genre_id;
+//     }
 
     // instance method that renders song object to dom
     
@@ -23,6 +23,6 @@ class Song{
     //     <br><br>
     //     `
     // }
-}
+// }
 
 
