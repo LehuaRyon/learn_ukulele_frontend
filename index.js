@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // happening upon page loading
+    // get and load songs
     fetchSongs()
     createSongForm()
 })
@@ -20,22 +21,27 @@ function fetchSongs() {
         //     s.renderSong();
         // }
 
-        songs.data.forEach(song => {
-            const songsDivMarkup =
-            `
-            <div data-id=${song.id}>
-                <img src=${song.attributes.img_url} height="200" width="250">
-                <h2>Title: ${song.attributes.title}</h2>
-                <h3>Artist: ${song.attributes.artist}</h3>
-                <p>Genre: ${song.attributes.genre.name}</p>
-                <a href=${song.attributes.link}>Ukulele Chords</a>
-                <button data-id=${song.id}>edit</button>
-            </div>
-            <br><br>
-            `;
-            document.getElementById("songs-container").innerHTML += songsDivMarkup
-        })
+        songs.data.forEach(song => {renderSong(song)});
     })
+    // shows what failed in backend: object wasnt created correctly
+    // instead of console.log, create an alert or show on dom what err is 
+    // .catch(err => console.log(err));
+}
+
+function renderSong(song) {
+    const songsDivMarkup =
+    `
+    <div data-id=${song.id}>
+        <img src=${song.attributes.img_url} height="200" width="250">
+        <h2>Title: ${song.attributes.title}</h2>
+        <h3>Artist: ${song.attributes.artist}</h3>
+        <p>Genre: ${song.attributes.genre.name}</p>
+        <a href=${song.attributes.link}>Ukulele Chords</a>
+        <button data-id=${song.id}>edit</button>
+    </div>
+    <br><br>
+    `;
+    document.getElementById("songs-container").innerHTML += songsDivMarkup
 }
 
 // create - create new songs
@@ -121,16 +127,15 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     .then(resp => resp.json())
     .then(song => {
         // console.log(song)
-        // const songData = song.data.attributes
-        const songData = song.data
+        const songData = song.data.attributes
         const songDivMarkup =
         `
         <div data-id=${song.id}>
-            <img src=${songData.attributes.img_url} height="200" width="250">
-            <h2>Title: ${songData.attributes.title}</h2>
-            <h3>Artist: ${songData.attributes.artist}</h3>
-            <p>Genre: ${songData.attributes.genre.name}</p>
-            <a href=${songData.attributes.link}>Ukulele Chords</a>
+            <img src=${songData.img_url} height="200" width="250">
+            <h2>Title: ${songData.title}</h2>
+            <h3>Artist: ${songData.artist}</h3>
+            <p>Genre: ${songData.genre.name}</p>
+            <a href=${songData.link}>Ukulele Chords</a>
             <button data-id=${songData.id}>edit</button>
         </div>
         <br><br>
