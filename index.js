@@ -20,8 +20,12 @@ function fetchSongs() {
         //     let s = new Song(song.id, song.title, song.artist, song.img_url, song.link, song.genre_id)
         //     s.renderSong();
         // }
-
-        songs.data.forEach(song => {renderSong(song)});
+        // debugger
+        songs.data.forEach(song => {
+            // const newSong = new Song(song)
+            const newSong = new Song(song, song.attributes)
+            renderSong(song)
+        });
     })
     // shows what failed in backend: object wasnt created correctly
     // instead of console.log, create an alert or show on dom what err is 
@@ -126,7 +130,7 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     })
     .then(resp => resp.json())
     .then(song => {
-        // console.log(song)
+        // console.log(song);
         const songData = song.data
         renderSong(songData)
     })

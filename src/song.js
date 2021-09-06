@@ -1,15 +1,16 @@
-// class Song{
-//     constructor(id, title, artist, img_url, link, genre_id) {
-//         this.id = id;
-//         this.title = title;
-//         this.artist = artist;
-//         this.img_url = img_url;
-//         this.link = link;
-//         this.genre_id = genre_id;
-//     }
+class Song{
+    // map attributes onto new song instances
+    constructor(song, songAttributes) {
+        // with fast JSON, attributes are nested
+        this.id = song.id;
+        this.title = songAttributes.title;
+        this.artist = songAttributes.artist;
+        this.img_url = songAttributes.img_url;
+        this.link = songAttributes.link;
+        this.genre_id = songAttributes.genre_id;
+    }
 
     // instance method that renders song object to dom
-    
     // renderSong(){
     //     let songsDiv = document.getElementById("songs-container")
     //     songsDiv.innerHTML +=
@@ -23,6 +24,6 @@
     //     <br><br>
     //     `
     // }
-// }
+}
 
 
