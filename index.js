@@ -61,6 +61,7 @@ function createSongForm() {
         <label for="link">Ukulele Chords:</label>
         <input id="link-url" type="text" name="link" value="" placeholder="Tab URL..." class="input-text">
         <br><br>
+        <label for"genres">Choose a Genre:</label>
         <select id="genres-select" name="genres" placeholder="Please Select">
             <option value="1">Pop</option>
             <option value="2">R&B</option>
@@ -89,6 +90,12 @@ function createSongForm() {
         <br><br>
     </form>
     `
+    songForm.addEventListener("submit", (e) => submitSongForm(e))
+}
+
+function submitSongForm(e) {
+    e.preventDefault();
+
 }
 
 // delete - delete a user
