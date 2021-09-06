@@ -95,7 +95,20 @@ function createSongForm() {
 
 function submitSongForm(e) {
     e.preventDefault();
-
+    const titleValue = document.getElementById("input-title").value
+    const artistValue = document.getElementById("input-artist").value
+    const imageValue = document.getElementById("input-url").value
+    const linkValue = document.getElementById("link-url").value
+    const genreId = document.getElementById("genres-select").value
+    // const genreValue = parseInt(document.getElementById("genres-select").value)
+    
+    let song = {
+        title: titleValue,
+        artist: artistValue,
+        img_url: imageValue,
+        link: linkValue,
+        genre_id: genreId
+    }
 }
 
 // delete - delete a user
