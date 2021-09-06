@@ -23,7 +23,7 @@ function fetchSongs() {
         // debugger
         songs.data.forEach(song => {
             // const newSong = new Song(song)
-            const newSong = new Song(song, song.attributes)
+            let newSong = new Song(song, song.attributes)
             renderSong(song)
         });
     })
