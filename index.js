@@ -127,20 +127,8 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     .then(resp => resp.json())
     .then(song => {
         // console.log(song)
-        const songData = song.data.attributes
-        const songDivMarkup =
-        `
-        <div data-id=${song.id}>
-            <img src=${songData.img_url} height="200" width="250">
-            <h2>Title: ${songData.title}</h2>
-            <h3>Artist: ${songData.artist}</h3>
-            <p>Genre: ${songData.genre.name}</p>
-            <a href=${songData.link}>Ukulele Chords</a>
-            <button data-id=${songData.id}>edit</button>
-        </div>
-        <br><br>
-        `;
-        document.getElementById("songs-container").innerHTML += songDivMarkup;
+        const songData = song.data
+        renderSong(songData)
     })
 }
 
