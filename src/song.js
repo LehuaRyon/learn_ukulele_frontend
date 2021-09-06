@@ -13,8 +13,8 @@ class Song{
     }
 
     // instance method that renders song object to dom
-    renderSong() {
-        // debugger
+    renderSongInfo() {
+        // debugger to see what this is
         return
         `
         <div data-id=${this.id}>

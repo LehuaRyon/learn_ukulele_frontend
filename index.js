@@ -22,30 +22,13 @@ function fetchSongs() {
         // }
         // debugger
         songs.data.forEach(song => {
-            // const newSong = new Song(song)
             let newSong = new Song(song, song.attributes)
-            renderSong(song)
+            document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
         });
     })
     // shows what failed in backend: object wasnt created correctly
     // instead of console.log, create an alert or show on dom what err is 
     // .catch(err => console.log(err));
-}
-
-function renderSong(song) {
-    const songsDivMarkup =
-    `
-    <div data-id=${song.id}>
-        <img src=${song.attributes.img_url} height="200" width="250">
-        <h2>Title: ${song.attributes.title}</h2>
-        <h3>Artist: ${song.attributes.artist}</h3>
-        <p>Genre: ${song.attributes.genre.name}</p>
-        <a href=${song.attributes.link}>Ukulele Chords</a>
-        <button data-id=${song.id}>edit</button>
-    </div>
-    <br><br>
-    `;
-    document.getElementById("songs-container").innerHTML += songsDivMarkup
 }
 
 // create - create new songs
