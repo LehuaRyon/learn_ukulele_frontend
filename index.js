@@ -115,7 +115,9 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     .then(song => {
         // console.log(song);
         const songData = song.data
-        renderSong(songData)
+        // render JSON response
+        let newSong = new Song(songData, songData.attributes)
+        document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
     })
 }
 
