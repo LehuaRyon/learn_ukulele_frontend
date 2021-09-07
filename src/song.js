@@ -24,7 +24,7 @@ class Song{
             <a href=${this.link}>Ukulele Chords</a>
             <br><br>
             <button data-id=${this.id}>Edit</button>
-            <button class="delete-bttn" data-id=${this.id}>Delete</button>
+            <button class="delete-bttn" data-id=${this.id} onclick="deleteSong()">Delete</button>
         </div>
         <br><br>
         `;

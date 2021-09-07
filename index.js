@@ -121,4 +121,20 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     })
 }
 
-// delete - delete a user
+// delete - delete a song
+let buttons = document.getElementsByClassName("delete-bttn")
+// console.log(buttons)
+// for each button of buttons array set up an event listener
+// for (const button of buttons) {
+//     button.addEventListener("click", () => {
+//         debugger;
+//     })
+// }
+function deleteSong() {
+    // debugger;
+    let songId = parseInt(event.target.dataset.id)
+    // console.log(songId)
+    fetch(`${BASE_URL}/songs/${songId}`, {
+        method: 'DELETE'
+    })
+}
