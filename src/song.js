@@ -22,7 +22,9 @@ class Song{
             <h3>Artist: ${this.artist}</h3>
             <p>Genre: ${this.genre.name}</p>
             <a href=${this.link}>Ukulele Chords</a>
-            <button data-id=${this.id}>edit</button>
+            <br><br>
+            <button data-id=${this.id}>Edit</button>
+            <button class="delete-bttn" data-id=${this.id}>Delete</button>
         </div>
         <br><br>
         `;
