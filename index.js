@@ -131,10 +131,12 @@ let buttons = document.getElementsByClassName("delete-bttn")
 //     })
 // }
 function deleteSong() {
-    // debugger;
+    // debugger;, in console, this = window
     let songId = parseInt(event.target.dataset.id)
     // console.log(songId)
     fetch(`${BASE_URL}/songs/${songId}`, {
         method: 'DELETE'
     })
+    // make it so a user does not have to refresh page, auto-refresh
+    this.location.reload()
 }
