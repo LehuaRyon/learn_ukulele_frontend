@@ -125,7 +125,7 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
 }
 
 // delete - delete a song
-let buttons = document.getElementsByClassName("delete-bttn")
+// let buttons = document.getElementsByClassName("delete-bttn")
 // console.log(buttons)
 // for each button of buttons array set up an event listener
 // for (const button of buttons) {
@@ -135,13 +135,32 @@ let buttons = document.getElementsByClassName("delete-bttn")
 // }
 function deleteSong() {
     // debugger;, in console, this = window
+    // debugger
     let songId = parseInt(event.target.dataset.id)
     // console.log(songId)
-    fetch(`${BASE_URL}/songs/${songId}`, {
+    event.target.parentElement.remove()
+    configObject = {
         method: 'DELETE'
-    })
+    }
+    fetch(`${BASE_URL}/songs/${songId}`, configObject)
+        .then(resp => resp.json())
+        .then(song => alert(song.message))
     // make it so a user does not have to refresh page, auto-refresh
-    this.location.reload()
+    // this.location.reload()
 }
+// function deleteSong() {
+//     // debugger;, in console, this = window
+//     debugger
+//     let songId = parseInt(event.target.dataset.id)
+//     // console.log(songId)
+//     fetch(`${BASE_URL}/songs/${songId}`, {
+//         method: 'DELETE'
+//         // .then(resp => resp.json()),
+//         // .then(song => alert(song.message))
+//     }
+//     )
+//     // make it so a user does not have to refresh page, auto-refresh
+//     this.location.reload()
+// }
 
 // read - fetch genres index
