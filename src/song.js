@@ -1,4 +1,6 @@
 class Song{
+    // remember objects
+    static all = []
     // map attributes onto new song instances
     constructor(song, songAttributes) {
         // with fast JSON, attributes are nested
@@ -23,7 +25,7 @@ class Song{
             <p>Genre: ${this.genre.name}</p>
             <a href=${this.link}>Ukulele Chords</a>
             <br><br>
-            <button data-id=${this.id}>Edit</button>
+            <button class="edit-bttn" data-id=${this.id}>Edit</button>
             <button class="delete-bttn" data-id=${this.id} onclick="deleteSong()">Delete</button>
         </div>
         <br><br>
@@ -33,6 +35,6 @@ class Song{
 
 // object and give .all key
 // need to be in global scope so it can know about song class
-Song.all = [];
+// Song.all = [];
 
 

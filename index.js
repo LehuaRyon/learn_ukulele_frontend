@@ -12,7 +12,7 @@ function fetchSongs() {
     fetch(`${BASE_URL}/songs`)
     // returns a promise
     .then(resp => resp.json())
-    // in promise theres is a response we can parse to json
+    // in promise theres is a response we can parse to json, turning into javascript object notation
     .then(songs => {
         // doing something with data fetched
 
@@ -103,7 +103,10 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     const bodyData = {title, artist, img_url, link, genre_id}
     fetch(`${BASE_URL}/songs`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json"
+        // accept: "application/json"
+    },
+        // what we're sending out and what acceting back
         body: JSON.stringify(bodyData)
             // title: title,
             // artist: artist,
@@ -140,3 +143,5 @@ function deleteSong() {
     // make it so a user does not have to refresh page, auto-refresh
     this.location.reload()
 }
+
+// read - fetch genres index
