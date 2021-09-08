@@ -27,8 +27,8 @@ class Song{
             <br><br>
             <button class="edit-bttn" data-id=${this.id}>Edit</button>
             <button class="delete-bttn" data-id=${this.id} onclick="deleteSong()">Delete</button>
+            <br><br>
         </div>
-        <br><br>
         `;
     }
 }

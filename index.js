@@ -106,7 +106,7 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
         headers: {"Content-Type": "application/json"
         // accept: "application/json"
     },
-        // what we're sending out and what acceting back
+        // what we're sending out and what accepting back
         body: JSON.stringify(bodyData)
             // title: title,
             // artist: artist,
@@ -121,6 +121,8 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
         // render JSON response
         let newSong = new Song(songData, songData.attributes)
         document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
+        let actualSongForm = document.getElementById("create-song-form")
+        actualSongForm.reset()
     })
 }
 
