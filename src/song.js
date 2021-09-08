@@ -10,6 +10,7 @@ class Song{
         this.img_url = songAttributes.img_url;
         this.link = songAttributes.link;
         this.genre = songAttributes.genre;
+        // this.addEventListener("click", deleteOrEditSong)
         // shove each new instance of song into the array
         Song.all.push(this)
     }

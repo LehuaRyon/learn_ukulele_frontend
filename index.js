@@ -99,7 +99,7 @@ function submittedSongForm(e) {
 
 function songPostFetch(title, artist, img_url, link, genre_id) {
     // console.log(title, artist, img_url, link, genre_id)
-    // build body object outside fetch
+    // build body object outside fetch, using destructuring (values match property names)
     const bodyData = {title, artist, img_url, link, genre_id}
     fetch(`${BASE_URL}/songs`, {
         method: "POST",
@@ -123,18 +123,26 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
         document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
         let actualSongForm = document.getElementById("create-song-form")
         actualSongForm.reset()
+        // div.addEventListener("click", deleteOrEditSong)
     })
 }
 
-// delete - delete a song
-// let buttons = document.getElementsByClassName("delete-bttn")
-// console.log(buttons)
-// for each button of buttons array set up an event listener
-// for (const button of buttons) {
-//     button.addEventListener("click", () => {
-//         debugger;
-//     })
+// delete - delete OR edit a song
+// function deleteOrEditSong() {
+    // debugger;, in console, this = window
+    // debugger
+    // if(e.target.innerText === "Delete"){
+    //     let songId = parseInt(e.target.dataset.id)
+    //     e.target.parentElement.remove()
+    //     const configObject = {
+    //         method: 'DELETE'
+    //     }
+    //     fetch(`${BASE_URL}/songs/${songId}`, configObject)
+    //     .then(resp => resp.json())
+    //     .then(song => alert(song.message))
+    // }
 // }
+
 function deleteSong() {
     // debugger;, in console, this = window
     // debugger
@@ -150,19 +158,5 @@ function deleteSong() {
     // make it so a user does not have to refresh page, auto-refresh
     // this.location.reload()
 }
-// function deleteSong() {
-//     // debugger;, in console, this = window
-//     debugger
-//     let songId = parseInt(event.target.dataset.id)
-//     // console.log(songId)
-//     fetch(`${BASE_URL}/songs/${songId}`, {
-//         method: 'DELETE'
-//         // .then(resp => resp.json()),
-//         // .then(song => alert(song.message))
-//     }
-//     )
-//     // make it so a user does not have to refresh page, auto-refresh
-//     this.location.reload()
-// }
 
 // read - fetch genres index
