@@ -123,6 +123,8 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
         document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
         let actualSongForm = document.getElementById("create-song-form")
         actualSongForm.reset()
+        const songContainer =  document.getElementById("songs-container")
+        songContainer.addEventListener("click", deleteSong)
         // div.addEventListener("click", deleteOrEditSong)
     })
 }
