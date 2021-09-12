@@ -170,16 +170,35 @@ function editSong() {
     // debugger;, in console, this = window
     // debugger
     if(event.target.innerText === "Edit"){
-        // change the innerText of my button to SVGAElement
+        // change the innerText of my button to save
         event.target.innerText = "Save"
         // have a edit form appear with values filled out
 
         // change the information on db
 
         // change the information on the frontend, changing the dom
+
+        // pass in edit button
+        createEditFields(event.target)
     }else if(event.target.innerText === "Save"){
+        // toggle save to edit
         event.target.innerText = "Edit"
     } 
+}
+
+function createEditFields(editBttn) {
+    // debugger
+    const div = editBttn.parentElement
+    // const title = div.children[1].innerText
+    const title = div.children[1].innerText.slice(7)
+    const artist = div.children[2].innerText.slice(8)
+    const img_url = div.children[0].src
+    const link = div.children[4].href
+    const genre = div.children[3].innerText.slice(7)
+    debugger
+    div.innerHTML =
+    `
+    `
 }
 
 // read - fetch genres index
