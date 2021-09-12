@@ -123,27 +123,32 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
         document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
         let actualSongForm = document.getElementById("create-song-form")
         actualSongForm.reset()
-        const songContainer =  document.getElementById("songs-container")
-        songContainer.addEventListener("click", deleteSong)
+        // const songContainer =  document.getElementById("songs-container")
+        // songContainer.addEventListener("click", deleteSong)
         // div.addEventListener("click", deleteOrEditSong)
     })
 }
 
-// delete - delete OR edit a song
-// function deleteOrEditSong() {
+delete - delete OR edit a song
+function deleteOrEditSong() {
     // debugger;, in console, this = window
     // debugger
-    // if(e.target.innerText === "Delete"){
-    //     let songId = parseInt(e.target.dataset.id)
-    //     e.target.parentElement.remove()
-    //     const configObject = {
-    //         method: 'DELETE'
-    //     }
-    //     fetch(`${BASE_URL}/songs/${songId}`, configObject)
-    //     .then(resp => resp.json())
-    //     .then(song => alert(song.message))
-    // }
-// }
+    if(event.target.innerText === "Delete"){
+        let songId = parseInt(event.target.dataset.id)
+        event.target.parentElement.remove()
+        const configObject = {
+            method: 'DELETE'
+        }
+        fetch(`${BASE_URL}/songs/${songId}`, configObject)
+        .then(resp => resp.json())
+        .then(song => alert(song.message))
+    }else if(event.target.innerText === "Edit"){
+        // change the innerText of my button to SVGAElement
+        // have a edit form appear with values filled out
+        // change the information on db
+        // change the information on the frontend
+    }
+}
 
 function deleteSong() {
     // debugger;, in console, this = window
