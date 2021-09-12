@@ -55,7 +55,8 @@ function createSongForm() {
         <input id="link-url" type="text" name="link" value="" placeholder="Tab URL..." class="input-text">
         <br><br>
         <label for"genres">Choose a Genre:</label>
-        <select id="genres-select" name="genres" placeholder="Please Select">
+        <select id="genres-select" name="genres">
+            <option value="" selected disabled hidden>Please Select</option>
             <option value="1">Pop</option>
             <option value="2">R&B</option>
             <option value="3">Indie</option>
@@ -195,9 +196,51 @@ function createEditFields(editBttn) {
     const img_url = div.children[0].src
     const link = div.children[4].href
     const genre = div.children[3].innerText.slice(7)
-    debugger
+    // debugger
     div.innerHTML =
     `
+    <form id="edit-song-form" style="">
+    <h3>Edit a Song to Learn!</h3>
+    <label for="title">Title:</label>
+    <input type="text" name="title" value="${title}">
+    <br><br>
+    <label for="artist">Artist:</label>
+    <input type="text" name="artist" value="${artist}">
+    <br><br>
+    <label for="image">Album Cover:</label>
+    <input type="text" name="image" value="${img_url}">
+    <br><br>
+    <label for="link">Ukulele Chords:</label>
+    <input type="text" name="link" value="${link}">
+    <br><br>
+    <label for"genres">Choose a Genre:</label>
+    <select name="genres">
+        <option value="1">Pop</option>
+        <option value="2">R&B</option>
+        <option value="3">Indie</option>
+        <option value="4">Hip Hop</option>
+        <option value="5">Country</option>
+        <option value="6">Rock</option>
+        <option value="7">Alternative</option>
+        <option value="8">Jazz</option>
+        <option value="9">Latin</option>
+        <option value="10">Reggae</option>
+        <option value="11">Electronic</option>
+        <option value="12">Religious</option>
+        <option value="13">Metal</option>
+        <option value="14">Folk</option>
+        <option value="15">Soundtrack</option>
+        <option value="16">World</option>
+        <option value="17">Comedy</option>
+        <option value="18">Blues</option>
+        <option value="19">Disco</option>
+        <option value="20">New Age</option>
+    </select>
+    <br><br>
+
+    <input id="create-button" type="submit" value="Submit Edit" class="submit">
+    <br><br>
+    </form>
     `
 }
 
