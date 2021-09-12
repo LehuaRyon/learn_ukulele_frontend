@@ -131,8 +131,8 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
 
 // delete - delete OR edit a song
 // function deleteOrEditSong() {
-//     // debugger;, in console, this = window
-//     // debugger
+    // debugger;, in console, this = window
+    // debugger
 //     if(event.target.innerText === "Delete"){
 //         let songId = parseInt(event.target.dataset.id)
 //         event.target.parentElement.remove()
@@ -143,10 +143,10 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
 //         .then(resp => resp.json())
 //         .then(song => alert(song.message))
 //     }else if(event.target.innerText === "Edit"){
-//         // change the innerText of my button to SVGAElement
-//         // have a edit form appear with values filled out
-//         // change the information on db
-//         // change the information on the frontend
+        // change the innerText of my button to save
+        // have a edit form appear with values filled out
+        // change the information on db
+        // change the information on the frontend, changing the dom
 //     }
 // }
 
@@ -164,6 +164,22 @@ function deleteSong() {
         .then(song => alert(song.message))
     // make it so a user does not have to refresh page, auto-refresh
     // this.location.reload()
+}
+
+function editSong() {
+    // debugger;, in console, this = window
+    // debugger
+    if(event.target.innerText === "Edit"){
+        // change the innerText of my button to SVGAElement
+        event.target.innerText = "Save"
+        // have a edit form appear with values filled out
+
+        // change the information on db
+
+        // change the information on the frontend, changing the dom
+    }else if(event.target.innerText === "Save"){
+        event.target.innerText = "Edit"
+    } 
 }
 
 // read - fetch genres index
