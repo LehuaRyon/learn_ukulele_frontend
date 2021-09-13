@@ -109,11 +109,6 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     },
         // what we're sending out and what accepting back
         body: JSON.stringify(bodyData)
-            // title: title,
-            // artist: artist,
-            // img_url: img_url,
-            // link: link,
-            // genre_id: genre_id
     })
     .then(resp => resp.json())
     .then(song => {
@@ -130,29 +125,8 @@ function songPostFetch(title, artist, img_url, link, genre_id) {
     })
 }
 
-// delete - delete OR edit a song
-// function deleteOrEditSong() {
-    // debugger;, in console, this = window
-    // debugger
-//     if(event.target.innerText === "Delete"){
-//         let songId = parseInt(event.target.dataset.id)
-//         event.target.parentElement.remove()
-//         const configObject = {
-//             method: 'DELETE'
-//         }
-//         fetch(`${BASE_URL}/songs/${songId}`, configObject)
-//         .then(resp => resp.json())
-//         .then(song => alert(song.message))
-//     }else if(event.target.innerText === "Edit"){
-        // change the innerText of my button to save
-        // have a edit form appear with values filled out
-        // change the information on db
-        // change the information on the frontend, changing the dom
-//     }
-// }
-
+// delete - delete a song
 function deleteSong() {
-    // debugger;, in console, this = window
     // debugger
     let songId = parseInt(event.target.dataset.id)
     // console.log(songId)
@@ -167,18 +141,15 @@ function deleteSong() {
     // this.location.reload()
 }
 
+// edit - update  the existing song
+    // change the innerText of my button to save
+    // event.target.innerText = "Save"
+    // have a edit form appear with values filled out
+    // change the information on db
+    // change the information on the frontend, changing the dom
 function editSong() {
-    // debugger;, in console, this = window
     // debugger
     if(event.target.innerText === "Edit"){
-        // change the innerText of my button to save
-        // event.target.innerText = "Save"
-        // have a edit form appear with values filled out
-
-        // change the information on db
-
-        // change the information on the frontend, changing the dom
-
         // pass in edit button
         createEditFields(event.target)
     }
@@ -190,8 +161,6 @@ function editSong() {
 }
 
 function createEditFields(editBttn) {
-    // debugger
-    
     const div = editBttn.parentElement
         let titleContent = div.querySelector(".card-title").textContent
         const titleValue = document.getElementById("input-title")
@@ -213,7 +182,7 @@ function createEditFields(editBttn) {
         const genreValue = document.getElementById("genres-select")
         genreValue.value = genreContent
         // debugger
-        //  Update - update  the existing song on backend
+
         const id = editBttn.dataset.id
         formBttn = document.getElementById("create-button")
         formBttn.addEventListener('click', (e) => {
@@ -231,11 +200,9 @@ function createEditFields(editBttn) {
             })
         })
                 .then(resp => resp.json())
-                .then(() => location.reload())
-        })
-
+                .then(() => location.reload(), )
+        })        
         
-
     // const title = div.children[1].innerText
     // const artist = div.children[2].innerText
     // const img_url = div.children[0].src
@@ -302,5 +269,9 @@ function createEditFields(editBttn) {
 function scrollToTop() {
     window.scrollTo(0, 0);
 }
+
+// function scrollToBottom() {
+//     window.scrollTo(0, document.body.scrollHeight);
+// }
 
 // read - fetch genres index
