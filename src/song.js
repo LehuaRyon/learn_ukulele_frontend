@@ -26,7 +26,7 @@ class Song{
             <p class="card-genre">${this.genre.name}</p>
             <a class="card-link" href=${this.link}>Ukulele Chords</a>
             <br><br>
-            <button class="edit-bttn" data-id=${this.id} onclick="editSong()">Edit</button>
+            <button class="edit-bttn" data-id=${this.id} onclick="editSong();scrollToTop();">Edit</button>
             <button class="delete-bttn" data-id=${this.id} onclick="deleteSong()">Delete</button>
             <br><br>
         </div>

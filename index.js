@@ -191,6 +191,7 @@ function editSong() {
 
 function createEditFields(editBttn) {
     // debugger
+    
     const div = editBttn.parentElement
         let titleContent = div.querySelector(".card-title").textContent
         const titleValue = document.getElementById("input-title")
@@ -297,5 +298,9 @@ function createEditFields(editBttn) {
 //         let newSong = new Song(songData, songData.attributes)
 //         document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
 // }
+
+function scrollToTop() {
+    window.scrollTo(0, 0);
+}
 
 // read - fetch genres index
