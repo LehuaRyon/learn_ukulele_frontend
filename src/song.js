@@ -20,11 +20,11 @@ class Song{
         // debugger to see what this is
         return `
         <div data-id=${this.id}>
-            <img src=${this.img_url} height="200" width="250">
-            <h2>Title: ${this.title}</h2>
-            <h3>Artist: ${this.artist}</h3>
-            <p>Genre: ${this.genre.name}</p>
-            <a href=${this.link}>Ukulele Chords</a>
+            <img class="card-img" src=${this.img_url} height="200" width="250">
+            <h2 class="card-title">${this.title}</h2>
+            <h3 class="card-artist">${this.artist}</h3>
+            <p class="card-genre">${this.genre.name}</p>
+            <a class="card-link" href=${this.link}>Ukulele Chords</a>
             <br><br>
             <button class="edit-bttn" data-id=${this.id} onclick="editSong()">Edit</button>
             <button class="delete-bttn" data-id=${this.id} onclick="deleteSong()">Delete</button>

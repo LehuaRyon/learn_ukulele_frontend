@@ -172,7 +172,7 @@ function editSong() {
     // debugger
     if(event.target.innerText === "Edit"){
         // change the innerText of my button to save
-        event.target.innerText = "Save"
+        // event.target.innerText = "Save"
         // have a edit form appear with values filled out
 
         // change the information on db
@@ -181,67 +181,121 @@ function editSong() {
 
         // pass in edit button
         createEditFields(event.target)
-    }else if(event.target.innerText === "Save"){
-        // toggle save to edit
-        event.target.innerText = "Edit"
-    } 
+    }
+    // }else if(event.target.innerText === "Save"){
+    //     // toggle save to edit
+    //     event.target.innerText = "Edit"
+    //     // saveUpdatedSong(event.target)
+    // } 
 }
 
 function createEditFields(editBttn) {
     // debugger
     const div = editBttn.parentElement
-    // const title = div.children[1].innerText
-    const title = div.children[1].innerText.slice(7)
-    const artist = div.children[2].innerText.slice(8)
-    const img_url = div.children[0].src
-    const link = div.children[4].href
-    const genre = div.children[3].innerText.slice(7)
-    // debugger
-    div.innerHTML =
-    `
-    <form id="edit-song-form" style="">
-    <h3>Edit a Song to Learn!</h3>
-    <label for="title">Title:</label>
-    <input type="text" name="title" value="${title}">
-    <br><br>
-    <label for="artist">Artist:</label>
-    <input type="text" name="artist" value="${artist}">
-    <br><br>
-    <label for="image">Album Cover:</label>
-    <input type="text" name="image" value="${img_url}">
-    <br><br>
-    <label for="link">Ukulele Chords:</label>
-    <input type="text" name="link" value="${link}">
-    <br><br>
-    <label for"genres">Choose a Genre:</label>
-    <select name="genres">
-        <option value="1">Pop</option>
-        <option value="2">R&B</option>
-        <option value="3">Indie</option>
-        <option value="4">Hip Hop</option>
-        <option value="5">Country</option>
-        <option value="6">Rock</option>
-        <option value="7">Alternative</option>
-        <option value="8">Jazz</option>
-        <option value="9">Latin</option>
-        <option value="10">Reggae</option>
-        <option value="11">Electronic</option>
-        <option value="12">Religious</option>
-        <option value="13">Metal</option>
-        <option value="14">Folk</option>
-        <option value="15">Soundtrack</option>
-        <option value="16">World</option>
-        <option value="17">Comedy</option>
-        <option value="18">Blues</option>
-        <option value="19">Disco</option>
-        <option value="20">New Age</option>
-    </select>
-    <br><br>
+        let titleContent = div.querySelector(".card-title").textContent
+        const titleValue = document.getElementById("input-title")
+        titleValue.value = titleContent
+        
+        let artistContent = div.querySelector(".card-artist").textContent
+        const artistValue = document.getElementById("input-artist")
+        artistValue.value = artistContent
+        
+        let imgContent = div.querySelector(".card-img").src
+        const imgValue = document.getElementById("input-url")
+        imgValue.value = imgContent
+        
+        let linkContent = div.querySelector(".card-link").href
+        const linkValue = document.getElementById("link-url")
+        linkValue.value = linkContent
 
-    <input id="create-button" type="submit" value="Submit Edit" class="submit">
-    <br><br>
-    </form>
-    `
+        let genreContent = div.querySelector(".card-genre").textContent
+        const genreValue = document.getElementById("genres-select")
+        genreValue.value = genreContent
+        // debugger
+        //  Update - update  the existing song on backend
+        const id = editBttn.dataset.id
+        formBttn = document.getElementById("create-button")
+        formBttn.addEventListener('click', (e) => {
+            e.preventDefault()
+            fetch(`${BASE_URL}/songs/${id}`, {
+                method: "PATCH",
+                headers: {"Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: titleValue.value,
+                artist: artistValue.value,
+                img_url: imgValue.value,
+                link: linkValue.value,
+                genre_id: genreValue.value
+            })
+        })
+                .then(resp => resp.json())
+                .then(() => location.reload())
+        })
+
+        
+
+    // const title = div.children[1].innerText
+    // const artist = div.children[2].innerText
+    // const img_url = div.children[0].src
+    // const link = div.children[4].href
+    // const genre = div.children[3].innerText
+   
+    // div.innerHTML =
+    // `
+    // <h3>Edit the Song to Learn!</h3>
+    // <label for="title">Title:</label>
+    // <input type="text" class="edit-${title}" name="title" value="${title}">
+    // <br><br>
+    // <label for="artist">Artist:</label>
+    // <input type="text" class="edit-${artist}" name="artist" value="${artist}">
+    // <br><br>
+    // <label for="image">Album Cover:</label>
+    // <input type="text" class="edit-${img_url}" name="image" value="${img_url}">
+    // <br><br>
+    // <label for="link">Ukulele Chords:</label>
+    // <input type="text" class="edit-${link}" name="link" value="${link}">
+    // <br><br>
+    // <label for="genre">Genre:</label>
+    // <input type="text" class="edit-${genre}" name="genre" value="${genre}">
+    // <br><br>
+
+    // <input id="edit-button" type="submit" value="Submit Edit" class="submit">
+    // <br><br>
+    // `
 }
+
+// function saveUpdatedSong(saveBttn){
+//     debugger
+//     const div = saveBttn.parentElement
+//     const title = div..querySelector(".edit-title").value
+//     const artist = div..querySelector(".edit-artist").value
+//     const img_url = div..querySelector(".edit-img_url").value
+//     const link = div..querySelector(".edit-link").value
+//     const genre_id = div..querySelector(".edit-genre").value
+//     const id = saveBttn.dataset.id
+
+//     const bodyData = {title, artist, img_url, link, genre_id}
+//     fetch(`${BASE_URL}/songs/${id}`, {
+//         method: "PATCH",
+//         headers: {"Content-Type": "application/json"
+        // accept: "application/json"
+//     },
+        // what we're sending out and what accepting back
+//         body: JSON.stringify(bodyData)
+            // title: title,
+            // artist: artist,
+            // img_url: img_url,
+            // link: link,
+            // genre_id: genre_id
+//     })
+//     .then(resp => resp.json())
+//     .then(song => {
+        // console.log(song);
+//         const songData = song.data
+        // render JSON response
+//         let newSong = new Song(songData, songData.attributes)
+//         document.getElementById("songs-container").innerHTML += newSong.renderSongInfo()
+// }
 
 // read - fetch genres index
